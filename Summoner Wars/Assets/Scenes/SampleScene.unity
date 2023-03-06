@@ -497,8 +497,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 600068438}
-  - component: {fileID: 600068439}
   - component: {fileID: 600068440}
+  - component: {fileID: 600068441}
   m_Layer: 0
   m_Name: Building
   m_TagString: Untagged
@@ -523,24 +523,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &600068439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 600068437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdb38950915f5b444add44da0e06e81b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Building1
-  buildImage: {fileID: 0}
-  cost: 0
-  sellValue: 0
-  hitPoints: 0
-  maxHitPoints: 0
 --- !u!114 &600068440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,6 +541,24 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &600068441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600068437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb38950915f5b444add44da0e06e81b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Building1
+  buildImage: {fileID: 0}
+  cost: 0
+  sellValue: 0
+  hitPoints: 0
+  maxHitPoints: 0
 --- !u!1 &647639954
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +612,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 808ad643de188e240b57498ca61b98a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -812,6 +812,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &879784880 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 209798540425749090, guid: 4d39bcd57cb95e940b557398ab6043e6, type: 3}
+  m_PrefabInstance: {fileID: 996862863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &879784883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879784880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!65 &879784885
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879784880}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.475258, z: 1}
+  m_Center: {x: 0, y: 0.7376292, z: 0}
+--- !u!114 &879784886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879784880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71fc7e1704f8053439af99c3d13ace8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Enemy
+  buildImage: {fileID: 0}
+  cost: 0
+  sellValue: 0
+  hitPoints: 0
+  maxHitPoints: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
