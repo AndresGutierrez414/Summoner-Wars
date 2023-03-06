@@ -111,6 +111,10 @@ public class UserInput : MonoBehaviour
                         //we already know the player has no selected object
                         player.SelectedObject = worldObject;
                         worldObject.SetSelection(true);
+
+
+                        Outline outline = hitObject.transform.root.GetComponent<Outline>();
+                        outline.enabled = true;
                     }
                 }
             }
@@ -120,7 +124,13 @@ public class UserInput : MonoBehaviour
     private void RightMouseClick() {
         if(player.hud.MouseInBounds() && !Input.GetKey(KeyCode.LeftAlt) && player.SelectedObject) {
             player.SelectedObject.SetSelection(false);
+
+            Outline outline = player.SelectedObject.transform.root.GetComponent<Outline>();
+            outline.enabled = false;
+
             player.SelectedObject = null;
+
+            
         }
     }
 

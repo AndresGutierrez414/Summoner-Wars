@@ -11,6 +11,7 @@ public class WorldObjects : MonoBehaviour
     protected Player player;
     protected string[] actions = {};
     protected bool currentlySelected = false;
+    private Outline outline;
 
     public void SetSelection(bool selected) {
         currentlySelected = selected;
@@ -42,7 +43,9 @@ public class WorldObjects : MonoBehaviour
     }
 
     protected virtual void Awake() {
-    
+        
+        outline = GetComponent<Outline>();
+        outline.enabled = currentlySelected;
     }
     
     protected virtual void Start () {
