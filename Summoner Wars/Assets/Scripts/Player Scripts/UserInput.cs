@@ -6,7 +6,7 @@ using System;
 
 public class UserInput : MonoBehaviour
 {
-
+    // variables //
     private Player player;
 
 
