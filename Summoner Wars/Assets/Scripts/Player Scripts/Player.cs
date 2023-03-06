@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    // variables //
     public string username;
     public bool human;
     public HUD hud;
