@@ -104,7 +104,8 @@ public class UserInput : MonoBehaviour
             if(hitObject && hitPoint != ResourceManager.InvalidPosition) {
                 if(player.SelectedObject) player.SelectedObject.MouseClick(hitObject, hitPoint, player);
                 else if(hitObject.name!="Ground") {
-                    WorldObjects worldObject = hitObject.GetComponent<WorldObjects>();
+                    WorldObjects worldObject = hitObject.transform.root.GetComponent<WorldObjects>();
+                    Debug.Log(hitObject);
                     Debug.Log(worldObject);
                     if(worldObject) {
                         //we already know the player has no selected object
@@ -145,15 +146,11 @@ public class UserInput : MonoBehaviour
         player = playerObject.GetComponent<Player>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
+    void LateUpdate() {
         if(player.human) {
             MoveCamera();
             RotateCamera();
             MouseActivity();
         }
-        
     }
 }
