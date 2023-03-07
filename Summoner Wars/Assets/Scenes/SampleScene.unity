@@ -379,7 +379,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2012397316}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 45}
 --- !u!54 &466689349
 Rigidbody:
@@ -1009,6 +1009,7 @@ GameObject:
   - component: {fileID: 913504004}
   - component: {fileID: 913504003}
   - component: {fileID: 913504002}
+  - component: {fileID: 913504007}
   m_Layer: 0
   m_Name: Coin Obj
   m_TagString: Untagged
@@ -1102,14 +1103,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913504001}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5356, y: 4.7439, z: 10.0592}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.3816624, y: 1.5607514, z: 6.1249194}
   m_LocalScale: {x: 1.0166, y: 1.1173629, z: 0.0768}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 2012397316}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &913504007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913504001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa7e38caec1d3084c8b2d38736bac387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 50
+  verticalSpeed: 1
+  height: 0.5
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,6 +1475,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 913504006}
   - {fileID: 466689348}
   m_Father: {fileID: 0}
   m_RootOrder: 9
