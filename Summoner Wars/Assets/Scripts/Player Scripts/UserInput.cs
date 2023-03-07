@@ -3,12 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using RTS;
 using System;
+using Settings;
 
 public class UserInput : MonoBehaviour
 {
     // variables //
     private Player player;
+    private BindingSettings bindings = new BindingSettings();
+    private Event currentEvent;
+    
+     
+    
+    private bool cameraForward(){
+        if(currentEvent.type == EventType.KeyDown){
+            if(currentEvent.keyCode == bindings.cameraForward){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
 
+        if(currentEvent.type == EventType.MouseDown){
+            if(currentEvent.keyCode == bindings.cameraForward){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        return false;
+    }
+
+    private bool cameraRotate()
+    {
+        if (Input.GetKeyDown(bindings.cameraRotate))
+        {
+            return true;
+        }
+
+        if (Input.GetMouseButtonDown(bindings.cameraRotate))
+        {
+            return true;
+        }
+
+        return false;
+    }
 
     private void MoveCamera() {
 
@@ -17,16 +57,16 @@ public class UserInput : MonoBehaviour
         Vector3 movement = new Vector3(0,0,0);
 
         //horizontal camera movement
-        if(xpos >= 0 && xpos < ResourceManager.ScrollWidth) {
+        if(!cameraRotate() && xpos >= 0 && xpos < ResourceManager.ScrollWidth) {
             movement.x -= ResourceManager.ScrollSpeed;
-        } else if(xpos <= Screen.width && xpos > Screen.width - ResourceManager.ScrollWidth) {
+        } else if(!cameraRotate() && xpos <= Screen.width && xpos > Screen.width - ResourceManager.ScrollWidth) {
             movement.x += ResourceManager.ScrollSpeed;
         }
         
         //vertical camera movement
-        if(ypos >= 0 && ypos < ResourceManager.ScrollWidth) {
+        if(!cameraRotate() && ypos >= 0 && ypos < ResourceManager.ScrollWidth) {
             movement.z -= ResourceManager.ScrollSpeed;
-        } else if(ypos <= Screen.height && ypos > Screen.height - ResourceManager.ScrollWidth) {
+        } else if(!cameraRotate() && ypos <= Screen.height && ypos > Screen.height - ResourceManager.ScrollWidth) {
             movement.z += ResourceManager.ScrollSpeed;
         }
 
@@ -163,4 +203,9 @@ public class UserInput : MonoBehaviour
             MouseActivity();
         }
     }
+
+    void OnGUI(){
+        currentEvent = Event.current;
+    }
+
 }
