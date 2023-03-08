@@ -12,70 +12,34 @@ public class BindingSettings : UserSettings
         public KeyCode keyCode;
         public int mouseButton;
 
-        public bool IsKeyCode
-        {
-            get { return keyCode != KeyCode.None; }
+        public object getBinding(){
+            if(keyCode == KeyCode.None && mouseButton != 0){
+                return mouseButton;
+            }
+
+            if(mouseButton == 0 && keyCode != KeyCode.None){
+                return keyCode;
+            }
+
+            return null;
         }
 
-        public bool IsMouseButton
-        {
-            get { return mouseButton != 0; }
+        public void setBinding(object binding){
+
+            if(binding is int){
+                mouseButton = (int)binding;
+            }
+
+            if(binding is KeyCode){
+                keyCode = (KeyCode)binding;
+            }
         }
+
     }
 
-    public KeyBinding cameraRotate = 2;
-    public KeyBinding cameraForward = KeyCode.W;
-    public KeyBinding cameraBackward = KeyCode.S;
-    public KeyBinding cameraRight = KeyCode.D;
-    public KeyBinding cameraLeft = KeyCode.A;
-
-    public void setCameraRotateKey(object newBinding)
-    {
-        cameraRotate = newBinding;
-    }
-
-    public dynamic getCameraRotateKey()
-    {
-        return cameraRotate;
-    }
-
-    public void setCameraForwardKey(object newBinding)
-    {
-        cameraForward = newBinding;
-    }
-
-    public dynamic getCameraForwardKey()
-    {
-        return cameraForward;
-    }
-
-    public void setCameraBackwardKey(object newBinding)
-    {
-        cameraBackward = newBinding;
-    }
-
-    public dynamic getCameraBackwardKey()
-    {
-        return cameraBackward;
-    }
-
-    public void setCameraRightKey(object newBinding)
-    {
-        cameraRight = newBinding;
-    }
-
-    public dynamic getCameraRightKey()
-    {
-        return cameraRight;
-    }
-
-    public void setCameraLeftKey(object newBinding)
-    {
-        cameraLeft = newBinding;
-    }
-
-    public dynamic getCameraLeftKey()
-    {
-        return cameraLeft;
-    }
+    public KeyBinding cameraRotate = new KeyBinding {mouseButton = 2};
+    public KeyBinding cameraForward = new KeyBinding {keyCode = KeyCode.W};
+    public KeyBinding cameraBackward = new KeyBinding {keyCode = KeyCode.S};
+    public KeyBinding cameraRight = new KeyBinding {keyCode = KeyCode.D};
+    public KeyBinding cameraLeft = new KeyBinding {keyCode = KeyCode.A};
 }

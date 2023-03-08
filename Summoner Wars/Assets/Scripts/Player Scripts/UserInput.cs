@@ -9,46 +9,24 @@ public class UserInput : MonoBehaviour
 {
     // variables //
     private Player player;
-    private BindingSettings bindings = new BindingSettings();
-    private Event currentEvent;
-    
-     
-    
-    private bool cameraForward(){
-        if(currentEvent.type == EventType.KeyDown){
-            if(currentEvent.keyCode == bindings.cameraForward){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
+    private BindingSettings bindings;
 
-        if(currentEvent.type == EventType.MouseDown){
-            if(currentEvent.keyCode == bindings.cameraForward){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-        return false;
-    }
 
     private bool cameraRotate()
     {
-        if (Input.GetKeyDown(bindings.cameraRotate))
+        if (Input.GetKeyDown((KeyCode)bindings.cameraRotate.getBinding()))
         {
             return true;
         }
 
-        if (Input.GetMouseButtonDown(bindings.cameraRotate))
+        if (Input.GetMouseButton((int)(bindings.cameraRotate.getBinding())))
         {
             return true;
         }
 
         return false;
     }
+
 
     private void MoveCamera() {
 
@@ -192,6 +170,7 @@ public class UserInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bindings = new BindingSettings();
         GameObject playerObject = GameObject.Find("Player");
         player = playerObject.GetComponent<Player>();
     }
@@ -202,10 +181,6 @@ public class UserInput : MonoBehaviour
             RotateCamera();
             MouseActivity();
         }
-    }
-
-    void OnGUI(){
-        currentEvent = Event.current;
     }
 
 }
