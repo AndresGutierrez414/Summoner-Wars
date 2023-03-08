@@ -10,21 +10,121 @@ public class UserInput : MonoBehaviour
     // variables //
     private Player player;
     private BindingSettings bindings;
+    private GameObject menu;
 
 
     private bool cameraRotate()
     {
-        if (Input.GetKeyDown((KeyCode)bindings.cameraRotate.getBinding()))
-        {
-            return true;
+        if(bindings.cameraRotate.getBinding() is KeyCode){
+            if (Input.GetKeyDown((KeyCode)bindings.cameraRotate.getBinding()))
+            {
+                return true;
+            }
         }
-
-        if (Input.GetMouseButton((int)(bindings.cameraRotate.getBinding())))
-        {
-            return true;
+        
+        if(bindings.cameraRotate.getBinding() is int){
+            if (Input.GetMouseButton((int)bindings.cameraRotate.getBinding()))
+            {
+                return true;
+            }
         }
 
         return false;
+    }
+
+
+    private bool cameraForward()
+    {
+        //Debug.Log(bindings.cameraForward.getBinding());
+
+
+        if(bindings.cameraForward.getBinding() is KeyCode){
+            if (Input.GetKey((KeyCode)bindings.cameraForward.getBinding()))
+            {
+                return true;
+            }
+        }
+
+        if(bindings.cameraForward.getBinding() is int){
+            if (Input.GetMouseButton((int)bindings.cameraForward.getBinding()))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool cameraLeft()
+    {
+        if(bindings.cameraLeft.getBinding() is KeyCode){
+            if (Input.GetKey((KeyCode)bindings.cameraLeft.getBinding()))
+            {
+                return true;
+            }
+        }
+
+        if(bindings.cameraLeft.getBinding() is int){
+            if (Input.GetMouseButton((int)bindings.cameraLeft.getBinding()))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool cameraRight()
+    {
+        if(bindings.cameraRight.getBinding() is KeyCode){
+            if (Input.GetKey((KeyCode)bindings.cameraRight.getBinding()))
+            {
+                return true;
+            }
+        }
+
+        if(bindings.cameraRight.getBinding() is int){
+            if (Input.GetMouseButton((int)bindings.cameraRight.getBinding()))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool cameraBackward()
+    {
+        if(bindings.cameraBackward.getBinding() is KeyCode){
+            if (Input.GetKey((KeyCode)bindings.cameraBackward.getBinding()))
+            {
+                return true;
+            }
+        }
+
+        if(bindings.cameraBackward.getBinding() is int){
+            if (Input.GetMouseButton((int)bindings.cameraBackward.getBinding()))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void showMenu(){
+
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            Debug.Log("Menu Open");
+            CanvasGroup menuC = menu.GetComponent<CanvasGroup>();
+
+            if(menuC.alpha == 0){
+                menuC.alpha = 1;
+            }
+            else{
+                menuC.alpha = 0;
+            }
+        }
     }
 
 
@@ -50,16 +150,16 @@ public class UserInput : MonoBehaviour
 
 
         //horizontal camera movement
-        if (Input.GetKey(KeyCode.A)) {
+        if (cameraLeft()) {
             movement.x -= ResourceManager.ScrollSpeed;
-        } else if (Input.GetKey(KeyCode.D)) {
+        } else if (cameraRight()) {
             movement.x += ResourceManager.ScrollSpeed;
         }
 
         //vertical camera movement
-        if (Input.GetKey(KeyCode.S)) {
+        if (cameraBackward()) {
             movement.z -= ResourceManager.ScrollSpeed;
-        } else if (Input.GetKey(KeyCode.W)) {
+        } else if (cameraForward()) {
             movement.z += ResourceManager.ScrollSpeed;
         }
 
@@ -171,6 +271,7 @@ public class UserInput : MonoBehaviour
     void Start()
     {
         bindings = new BindingSettings();
+        menu = GameObject.Find("Menu");
         GameObject playerObject = GameObject.Find("Player");
         player = playerObject.GetComponent<Player>();
     }
@@ -180,6 +281,7 @@ public class UserInput : MonoBehaviour
             MoveCamera();
             RotateCamera();
             MouseActivity();
+            showMenu();
         }
     }
 

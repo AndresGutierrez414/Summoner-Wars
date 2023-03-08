@@ -7,39 +7,33 @@ using Settings;
 
 public class BindingSettings : UserSettings
 {
-    public struct KeyBinding
+    public struct KeyBinding<T>
     {
-        public KeyCode keyCode;
-        public int mouseButton;
+        private T binding;
 
-        public object getBinding(){
-            if(keyCode == KeyCode.None && mouseButton != 0){
-                return mouseButton;
-            }
-
-            if(mouseButton == 0 && keyCode != KeyCode.None){
-                return keyCode;
-            }
-
-            return null;
+        public void setBinding(T newBinding)
+        {
+            binding = newBinding;
         }
 
-        public void setBinding(object binding){
-
-            if(binding is int){
-                mouseButton = (int)binding;
-            }
-
-            if(binding is KeyCode){
-                keyCode = (KeyCode)binding;
-            }
+        public T getBinding()
+        {
+            return binding;
         }
-
     }
 
-    public KeyBinding cameraRotate = new KeyBinding {mouseButton = 2};
-    public KeyBinding cameraForward = new KeyBinding {keyCode = KeyCode.W};
-    public KeyBinding cameraBackward = new KeyBinding {keyCode = KeyCode.S};
-    public KeyBinding cameraRight = new KeyBinding {keyCode = KeyCode.D};
-    public KeyBinding cameraLeft = new KeyBinding {keyCode = KeyCode.A};
+    public KeyBinding<int> cameraRotate = new KeyBinding<int>();
+    public KeyBinding<KeyCode> cameraForward = new KeyBinding<KeyCode>();
+    public KeyBinding<KeyCode> cameraBackward = new KeyBinding<KeyCode>();
+    public KeyBinding<KeyCode> cameraRight = new KeyBinding<KeyCode>();
+    public KeyBinding<KeyCode> cameraLeft = new KeyBinding<KeyCode>();
+
+    public BindingSettings()
+    {
+        cameraRotate.setBinding(2);
+        cameraForward.setBinding(KeyCode.W);
+        cameraBackward.setBinding(KeyCode.S);
+        cameraRight.setBinding(KeyCode.D);
+        cameraLeft.setBinding(KeyCode.A);
+    }
 }
